@@ -22,7 +22,8 @@ module.exports = function (gulp, plugins, sources, destinations, config) {
   function bundle() {
     return bundler.bundle()
       // log errors if they happen
-      .on('error', plugins.util.log.bind(plugins.util, 'Browserify Error'))
+      .on('error', handleError)
+      .pipe( plugins.plumber() )
       .pipe( plugins.source( destinations.bundle ) )
       // optional, remove if you don't need to buffer file contents
       .pipe(plugins.buffer())
@@ -32,6 +33,11 @@ module.exports = function (gulp, plugins, sources, destinations, config) {
       .pipe( plugins.sourcemaps.write('./')) // writes .map file
       .pipe( gulp.dest( destinations.scripts ) )
 
+  }
+
+  function handleError( err ) {
+    plugins.util.log('Browserify Error: ' + err.message)
+    this.emit('end');
   }
 
   // Trigger

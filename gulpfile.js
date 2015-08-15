@@ -69,7 +69,7 @@ require('./gulp/utilities')( gulp, plugins, sources, destinations, config )
 
 
 // Core tasks
-gulp.task( 'build',   [ 'assets:build', 'scripts:build', 'styles:build', 'templates:build' ] )
+gulp.task( 'build',   [ 'clean', 'assets:build', 'scripts:build', 'styles:build', 'templates:build', 'public' ] )
 gulp.task( 'watch',   [ 'assets:watch', 'scripts:watch', 'styles:watch', 'templates:watch' ] )
 gulp.task( 'serve',   [ 'browser-sync', 'watch' ] )
 gulp.task( 'default', [ 'serve' ] );
