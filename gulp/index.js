@@ -2,12 +2,12 @@
 
 var fs = require('fs')
 var tasks = fs.readdirSync('./gulp/tasks/')
-var gulp = require('gulp')
 var config = require('./config')
+var gulp = require('gulp')
 
 // loop tasks folder
 tasks.forEach( function( task ) {
-  require( './tasks/' + task )( gulp, config.plugins, config.sources, config.destinations, config.config )
+  require( './tasks/' + task )
 })
 
 // Core tasks

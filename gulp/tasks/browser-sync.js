@@ -1,15 +1,16 @@
 'use strict';
 
-module.exports = function ( gulp, plugins, sources, destinations, config ) {
+import yargs       from 'yargs'
+import browserSync from 'browser-sync'
+import config      from '../config'
+import gulp        from 'gulp'
 
-  gulp.task( 'browser-sync', [ 'build' ], function() {
-    plugins.browserSync( {
-      open:   !!plugins.argv.open,
-      notify: !!plugins.argv.notify,
-      server: {
-        baseDir: destinations.root
-      }
-    } )
+gulp.task( 'browser-sync', [ 'build' ], function() {
+  browserSync( {
+    open:   !!yargs.argv.open,
+    notify: !!yargs.argv.notify,
+    server: {
+      baseDir: config.destinations.root
+    }
   } )
-
-}
+} )

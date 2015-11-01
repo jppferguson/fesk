@@ -3,20 +3,6 @@ var config       = {},
     src          = 'src',
     dest         = 'dist'
 
-config.plugins = require('gulp-load-plugins')()
-
-// add non-autoloaded libs to plugins object
-config.plugins.argv        = require('yargs').argv
-config.plugins.browserSync = require('browser-sync')
-config.plugins.buffer      = require('vinyl-buffer')
-config.plugins.del         = require('del')
-config.plugins.gutil       = require('gulp-util')
-config.plugins.notifier    = require('node-notifier')
-config.plugins.path        = require('path')
-config.plugins.reload      = config.plugins.browserSync.reload
-config.plugins.source      = require('vinyl-source-stream')
-config.plugins.transform   = require('vinyl-transform')
-
 // setup sources object
 config.sources = {}
 config.sources.root = src
