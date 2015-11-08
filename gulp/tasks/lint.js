@@ -14,7 +14,7 @@ gulp.task( 'eslint:scripts', function() {
   return lint( config.sources.scripts.glob )
 } )
 gulp.task( 'eslint:gulp',    function() {
-  return lint( global.gulpPath + '/**/*.js' )
+  return lint( config.gulpPath + '/**/*.js' )
 } )
 
 // aliases

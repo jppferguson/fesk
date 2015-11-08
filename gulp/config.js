@@ -3,6 +3,9 @@ var config       = {}
 var src          = 'src'
 var dest         = 'dist'
 
+// used for linting
+config.gulpPath = './gulp'
+
 // setup settings object
 config.settings = {}
 config.settings.autoprefixer = 'last 2 versions'
