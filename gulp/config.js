@@ -6,7 +6,8 @@ var dest         = 'dist'
 // setup settings object
 config.settings = {}
 config.settings.autoprefixer = 'last 2 versions'
-config.settings.sourceMaps   = true
+config.settings.minify = false
+config.settings.sourceMaps = true
 
 // setup sources object
 config.sources = {}
