@@ -1,7 +1,7 @@
 
-var config       = {},
-    src          = 'src',
-    dest         = 'dist'
+var config       = {}
+var src          = 'src'
+var dest         = 'dist'
 
 // setup settings object
 config.settings = {}

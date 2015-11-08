@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import yargs       from 'yargs'
 import browserSync from 'browser-sync'
@@ -7,7 +7,7 @@ import gulp        from 'gulp'
 
 gulp.task( 'browser-sync', [ 'build' ], function() {
   browserSync( {
-    open:   !!yargs.argv.open,
+    open: !!yargs.argv.open,
     notify: !!yargs.argv.notify,
     server: {
       baseDir: config.destinations.root

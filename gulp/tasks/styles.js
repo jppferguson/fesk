@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import autoprefixer from 'gulp-autoprefixer'
 import browserSync  from 'browser-sync'
@@ -18,22 +18,22 @@ gulp.task( 'styles:build', function() {
     .on( 'error', handleError )
     .pipe( autoprefixer( config.settings.autoprefixer ) )
     .pipe( gulpif( !!config.settings.sourceMaps,
-      sourcemaps.write('./', {
+      sourcemaps.write( './', {
         sourceRoot: config.sources.styles.root
-      })
-    ))
+      } )
+    ) )
     .pipe( gulp.dest( config.destinations.styles ) )
     .pipe( rename( { suffix: '.min' } ) )
     .pipe( minify() )
     .pipe( gulpif( !!config.settings.sourceMaps,
-      sourcemaps.write('./', {
+      sourcemaps.write( './', {
         sourceRoot: config.sources.styles.root
-      })
-    ))
+      } )
+    ) )
     .pipe( gulp.dest( config.destinations.styles ) )
     .pipe( gulpif( browserSync.active, browserSync.reload( { stream: true } ) ) )
 } )
 
 gulp.task( 'styles:watch', [ 'styles:build' ], function() {
   gulp.watch( config.sources.styles.glob, [ 'styles:build' ] )
-})
+} )

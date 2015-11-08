@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import browserify from 'browserify'
 import buffer     from 'vinyl-buffer'
