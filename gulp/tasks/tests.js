@@ -4,7 +4,7 @@
 import gulp        from 'gulp'
 import handleError from '../helpers/handle-error'
 
-gulp.task( 'tests', function() {
+gulp.task( 'tests:build', function() {
 
   // Run tests here
   handleError( 'Test task hasn\'t been setup yet...' )

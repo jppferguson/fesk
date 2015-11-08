@@ -76,7 +76,7 @@ function buildBundle( filename, watch ) {
 }
 
 // Tasks
-gulp.task( 'scripts:build', [ 'lint:scripts', 'tests' ], function() {
+gulp.task( 'scripts:build', function() {
   return buildBundle( config.sources.scripts.main, false )
 } )
 
