@@ -5,7 +5,7 @@ import util   from 'gulp-util'
 
 module.exports = function( error ) {
 
-  if ( !global.isProduction ) {
+  if ( !global.isProduction && typeof error === 'object' ) {
 
     notify.onError( {
       title: 'GulpJS',
