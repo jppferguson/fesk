@@ -12,6 +12,10 @@ config.settings.sourceMaps   = true
 config.sources = {}
 config.sources.root = src
 
+config.sources.www = {}
+config.sources.www.root = src + '/public'
+config.sources.www.glob = config.sources.www.root + '/**/*'
+
 config.sources.fonts = {}
 config.sources.fonts.root = src + '/fonts'
 config.sources.fonts.glob = config.sources.fonts.root + '/**/*'
@@ -40,6 +44,7 @@ config.destinations = {}
 config.destinations.root = dest
 config.destinations.bundle = 'app.js'
 config.destinations.assets = dest + '/assets'
+config.destinations.fonts = config.destinations.assets + '/fonts'
 config.destinations.images = config.destinations.assets + '/img'
 config.destinations.scripts = config.destinations.assets + '/js'
 config.destinations.styles = config.destinations.assets + '/css'
