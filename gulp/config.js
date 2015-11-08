@@ -12,6 +12,10 @@ config.settings.sourceMaps   = true
 config.sources = {}
 config.sources.root = src
 
+config.sources.fonts = {}
+config.sources.fonts.root = src + '/fonts'
+config.sources.fonts.glob = config.sources.fonts.root + '/**/*'
+
 config.sources.images = {}
 config.sources.images.root = src + '/images'
 config.sources.images.glob = config.sources.images.root + '/**/*'
