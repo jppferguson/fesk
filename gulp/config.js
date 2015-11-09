@@ -42,6 +42,10 @@ config.sources.templates = {}
 config.sources.templates.root = src + '/templates'
 config.sources.templates.glob = config.sources.templates.root + '/**/*.jade'
 
+config.sources.tests = {}
+config.sources.tests.root = 'test'
+config.sources.tests.glob = config.sources.tests.root + '/**/*.js'
+
 
 // setup destinations object
 config.destinations = {}
