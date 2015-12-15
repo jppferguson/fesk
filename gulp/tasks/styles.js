@@ -17,20 +17,12 @@ gulp.task( 'styles:build', function() {
     .pipe( sass() )
     .on( 'error', handleError )
     .pipe( autoprefixer( config.settings.autoprefixer ) )
-    .pipe( gulpif( !!config.settings.sourceMaps,
-      sourcemaps.write( './', {
-        sourceRoot: config.sources.styles.root
-      } )
-    ) )
+    .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.write() ) )
     .pipe( gulp.dest( config.destinations.styles ) )
-    .pipe( rename( { suffix: '.min' } ) )
-    .pipe( minify() )
-    .pipe( gulpif( !!config.settings.sourceMaps,
-      sourcemaps.write( './', {
-        sourceRoot: config.sources.styles.root
-      } )
-    ) )
-    .pipe( gulp.dest( config.destinations.styles ) )
+    .pipe( gulpif( !!config.settings.minify, rename( { suffix: '.min' } ) ) )
+    .pipe( gulpif( !!config.settings.minify, minify() ) )
+    .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.write( './' ) ) )
+    .pipe( gulpif( !!config.settings.minify, gulp.dest( config.destinations.styles ) ) )
     .pipe( gulpif( browserSync.active, browserSync.reload( { stream: true } ) ) )
 } )
 
