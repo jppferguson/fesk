@@ -35,8 +35,10 @@ config.sources.scripts.glob = config.sources.scripts.root + '/**/*.js'
 
 config.sources.styles = {}
 config.sources.styles.root = src + '/stylesheets'
-config.sources.styles.glob = config.sources.styles.root + '/**/*.less'
-config.sources.styles.build = config.sources.styles.root + '/main.less'
+config.sources.styles.glob = '**/*.scss'
+config.sources.styles.build = [
+  config.sources.styles.root + '/main.scss'
+]
 
 config.sources.templates = {}
 config.sources.templates.root = src + '/templates'

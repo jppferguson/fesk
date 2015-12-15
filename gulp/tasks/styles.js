@@ -6,15 +6,15 @@ import config       from '../config'
 import gulp         from 'gulp'
 import gulpif       from 'gulp-if'
 import handleError  from '../helpers/handle-error'
-import less         from 'gulp-less'
+import sass         from 'gulp-sass'
 import minify       from 'gulp-minify-css'
 import rename       from 'gulp-rename'
 import sourcemaps   from 'gulp-sourcemaps'
 
 gulp.task( 'styles:build', function() {
-  return gulp.src( 'src/stylesheets/main.less' )
+  return gulp.src( config.sources.styles.build, { base: config.sources.styles.root } )
     .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.init() ) )
-    .pipe( less() )
+    .pipe( sass() )
     .on( 'error', handleError )
     .pipe( autoprefixer( config.settings.autoprefixer ) )
     .pipe( gulpif( !!config.settings.sourceMaps,
