@@ -5,7 +5,6 @@ import browserSync from 'browser-sync'
 import browserify  from 'browserify'
 import buffer      from 'vinyl-buffer'
 import config      from '../config'
-import debowerify  from 'debowerify'
 import eventStream from 'event-stream'
 import gulp        from 'gulp'
 import gulpif      from 'gulp-if'
@@ -37,7 +36,6 @@ function buildBundle( filename, watch ) {
 
   // Do transformation tasks here
   bundler.transform( babelify )
-  bundler.transform( debowerify )
   bundler.transform( jadeify )
   bundler.plugin( minifyify, {
     map: false,           // handle with sourcemaps
