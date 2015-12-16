@@ -39,7 +39,7 @@ function buildBundle( filename, watch ) {
   bundler.transform( jadeify )
   bundler.plugin( minifyify, {
     map: false,           // handle with sourcemaps
-    minify: minifyBundle, // pass-through
+    minify: minifyBundle  // pass-through
   } )
 
   rebundle = function() {
