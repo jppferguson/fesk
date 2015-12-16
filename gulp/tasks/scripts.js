@@ -14,7 +14,7 @@ import jadeify     from 'jadeify'
 import path        from 'path'
 import source      from 'vinyl-source-stream'
 import sourcemaps  from 'gulp-sourcemaps'
-import uglifyify   from 'uglifyify'
+import minifyify   from 'minifyify'
 import util        from 'gulp-util'
 import watchify    from 'watchify'
 
@@ -39,9 +39,10 @@ function buildBundle( filename, watch ) {
   bundler.transform( babelify )
   bundler.transform( debowerify )
   bundler.transform( jadeify )
-  if ( minifyBundle ) {
-    bundler.transform( { global: true }, uglifyify )
-  }
+  bundler.plugin( minifyify, {
+    map: false,           // handle with sourcemaps
+    minify: minifyBundle, // pass-through
+  } )
 
   rebundle = function() {
     return bundler.bundle()
