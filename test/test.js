@@ -1,7 +1,7 @@
 'use strict'
 
 import assert from 'assert'
-import { testable, alsoTestable } from '../src/scripts/main'
+import { testable, alsoTestable } from '../src/scripts/app'
 
 describe( 'testable', function() {
   it( 'should return stuff', function() {
