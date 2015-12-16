@@ -6,10 +6,12 @@ import browserify  from 'browserify'
 import buffer      from 'vinyl-buffer'
 import config      from '../config'
 import debowerify  from 'debowerify'
+import eventStream from 'event-stream'
 import gulp        from 'gulp'
 import gulpif      from 'gulp-if'
 import handleError from '../helpers/handle-error'
 import jadeify     from 'jadeify'
+import path        from 'path'
 import source      from 'vinyl-source-stream'
 import sourcemaps  from 'gulp-sourcemaps'
 import uglifyify   from 'uglifyify'
@@ -44,7 +46,7 @@ function buildBundle( filename, watch ) {
   rebundle = function() {
     return bundler.bundle()
       .on( 'error', handleError )
-      .pipe( source( config.destinations.bundle ) )
+      .pipe( source( path.basename( filename ) ) )
       .pipe( buffer() ) // optional, remove if you don't need to buffer file contents
       .pipe( gulpif( sourceMaps,
         sourcemaps.init( {
@@ -75,11 +77,18 @@ function buildBundle( filename, watch ) {
   return rebundle()
 }
 
+function buildBundles( glob, watch ) {
+  var bundles = glob.map( function( filename ) {
+    return buildBundle( filename, watch )
+  } )
+  return eventStream.merge.apply( null, bundles )
+}
+
 // Tasks
 gulp.task( 'scripts:build', function() {
-  return buildBundle( config.sources.scripts.main, false )
+  return buildBundles( config.sources.scripts.build, false )
 } )
 
 gulp.task( 'scripts:watch', function() {
-  return buildBundle( config.sources.scripts.main, true )
+  return buildBundles( config.sources.scripts.build, true )
 } )

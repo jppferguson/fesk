@@ -30,8 +30,10 @@ config.sources.images.glob = config.sources.images.root + '/**/*'
 
 config.sources.scripts = {}
 config.sources.scripts.root = src + '/scripts'
-config.sources.scripts.main = config.sources.scripts.root + '/main.js'
 config.sources.scripts.glob = config.sources.scripts.root + '/**/*.js'
+config.sources.scripts.build = [
+  config.sources.scripts.root + '/main.js',
+]
 
 config.sources.styles = {}
 config.sources.styles.root = src + '/stylesheets'
