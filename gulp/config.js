@@ -44,7 +44,13 @@ config.sources.styles.build = [
 
 config.sources.templates = {}
 config.sources.templates.root = src + '/templates'
-config.sources.templates.glob = config.sources.templates.root + '/**/*.jade'
+config.sources.templates.ext = 'jade'
+config.sources.templates.watch = config.sources.templates.root + '/**/*.' + config.sources.templates.ext
+config.sources.templates.build = [
+  config.sources.templates.watch,
+  '!' + config.sources.templates.root + '/includes/*.' + config.sources.templates.ext
+]
+
 
 config.sources.tests = {}
 config.sources.tests.root = 'test'
