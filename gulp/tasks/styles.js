@@ -12,17 +12,20 @@ import rename       from 'gulp-rename'
 import sourcemaps   from 'gulp-sourcemaps'
 
 gulp.task( 'styles:build', function() {
+  var sourceMaps   = !global.isProduction && !!config.settings.sourceMaps
+  var minifyStyles = global.isProduction || config.settings.minify
+
   return gulp.src( config.sources.styles.build, { base: config.sources.styles.root } )
-    .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.init() ) )
+    .pipe( gulpif( sourceMaps, sourcemaps.init() ) )
     .pipe( sass() )
     .on( 'error', handleError )
     .pipe( autoprefixer( config.settings.autoprefixer ) )
-    .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.write() ) )
+    .pipe( gulpif( sourceMaps, sourcemaps.write() ) )
     .pipe( gulp.dest( config.destinations.styles ) )
-    .pipe( gulpif( !!config.settings.minify, rename( { suffix: '.min' } ) ) )
-    .pipe( gulpif( !!config.settings.minify, minify() ) )
-    .pipe( gulpif( !!config.settings.sourceMaps, sourcemaps.write( './' ) ) )
-    .pipe( gulpif( !!config.settings.minify, gulp.dest( config.destinations.styles ) ) )
+    .pipe( gulpif( minifyStyles, rename( { suffix: '.min' } ) ) )
+    .pipe( gulpif( minifyStyles, minify() ) )
+    .pipe( gulpif( sourceMaps, sourcemaps.write( './' ) ) )
+    .pipe( gulpif( minifyStyles, gulp.dest( config.destinations.styles ) ) )
     .pipe( gulpif( browserSync.active, browserSync.reload( { stream: true } ) ) )
 } )
 
