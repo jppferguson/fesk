@@ -4,6 +4,10 @@
   "licence": "MIT",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "setup": "npm install",
+    "test": "gulp tests:build"
+  },
   "engines": {
     "node": "^0.12.x",
     "npm": "^2.1.x"
